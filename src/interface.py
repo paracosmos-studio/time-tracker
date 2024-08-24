@@ -27,7 +27,7 @@ import csv
 
 class MainWindow(QMainWindow):
     """
-    Main application window for the Time Tracker.
+    Main application window for the Timer.
     """
 
     def __init__(self):
@@ -46,7 +46,7 @@ class MainWindow(QMainWindow):
         self.setMaximumHeight(210)
         self.setMinimumHeight(210)
 
-        self.setWindowTitle("Time Tracker")
+        self.setWindowTitle("Timer")
         
         # Remove the default title bar
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
@@ -69,6 +69,10 @@ class MainWindow(QMainWindow):
         self.project_combo.addItems(self.project_manager.projects)
         self.project_combo.currentTextChanged.connect(self.project_changed)
         self.project_combo.setFont(self.custom_style.regular_font)
+
+        initial_project = self.project_combo.currentText()
+        if initial_project:
+            self.project_changed(initial_project)
 
         self.settings_button = QPushButton("Settings")
         self.view_log_button = QPushButton("Timesheet")
@@ -109,8 +113,6 @@ class MainWindow(QMainWindow):
         # Connections
         self.settings_button.clicked.connect(self.open_settings)
         self.view_log_button.clicked.connect(self.view_log)
-
-        self.refresh_ui()
 
 
     def toggle_timer(self):

@@ -1,17 +1,29 @@
 import json
 import os
+import sys
+
+
+if getattr(sys, 'frozen', False):
+    script_dir = sys._MEIPASS
+    settings_dir = os.path.join(script_dir, 'src/default/settings.json')
+    timesheet_dir = os.path.join(script_dir, 'src/default/timesheet.csv')
+else:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    settings_dir = os.path.join(script_dir, 'default/settings.json')
+    timesheet_dir = os.path.join(script_dir, 'default/timesheet.csv')
+
 
 class ProjectManager:
     """
     Class to manage projects and settings
     """
 
-    def __init__(self, settings_file='default/settings.json'):
+    def __init__(self, settings_file=settings_dir):
         self.settings_file = settings_file
         self.settings = self.load_settings()
         self.version = self.settings.get('version', '1.0.0')
         self.projects = self.settings.get('projects', [])
-        self.csv_file_path = self.settings.get('csv_file_path', 'default/timesheet.csv')
+        self.csv_file_path = self.settings.get('csv_file_path', timesheet_dir)
 
 
     def load_settings(self):
@@ -21,7 +33,7 @@ class ProjectManager:
         return {
             "version": "1.0.0",
             "projects": [],
-            "csv_file_path": "default/timesheet.csv"
+            "csv_file_path": timesheet_dir
         }
 
 

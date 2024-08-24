@@ -1,8 +1,8 @@
-Time Tracker
+Timer
 
-The application allows you to track time for different projects. 
-The data is stored locally in a csv file. The location of the 
-csv file can be changed from the settings.
+A desktop application that allows you to track time for multiple different 
+projects. The data is stored locally in a csv file. The location of the csv file 
+can be changed from the settings menu.
 
 ---
 
@@ -16,7 +16,8 @@ Project Setup
 2. Create a virtual environment and activate it
 
    python3 venv .venv
-   source .venv/bin/activate
+   source .venv/bin/activate   # For Linux and MacOS
+   .venv\Scripts\activate      # For Windows
 
 3. Install the required packages
    
@@ -30,3 +31,19 @@ Project Setup
 
    cd src
    python3 main.py
+
+
+---
+
+Creating Executables
+
+1. Install PyInstaller
+
+   pip3 install pyinstaller
+
+2. Bundle the application
+
+   pyinstaller Timer.spec
+
+
+It will create a `dist` directory with the executable files.

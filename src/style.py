@@ -1,6 +1,6 @@
 from PyQt6.QtGui import QFont, QFontDatabase
 import os
-
+import sys
 
 class Style:
     """
@@ -14,8 +14,15 @@ class Style:
     def __init__(self):
         super().__init__()
 
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        font_dir = os.path.join(script_dir, '../resources/fonts')
+        # Determine if the application is running as a bundled executable
+        if getattr(sys, 'frozen', False):
+            script_dir = sys._MEIPASS
+            font_dir = os.path.join(script_dir, 'resources/fonts')
+            dropdown_icon = os.path.join(script_dir, 'resources/dropdown.svg')
+        else:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            font_dir = os.path.join(script_dir, '../resources/fonts')
+            dropdown_icon = os.path.join(script_dir, '../resources/dropdown.svg')
 
         self.regular_font_id = QFontDatabase.addApplicationFont(os.path.join(font_dir, "satoshi_regular.otf"))
         self.medium_font_id = QFontDatabase.addApplicationFont(os.path.join(font_dir, "satoshi_medium.otf"))
@@ -23,7 +30,6 @@ class Style:
 
         if self.regular_font_id == -1:
             print("Failed to load font.")
-            exit()
 
         font_family = QFontDatabase.applicationFontFamilies(self.regular_font_id)[0]
         self.regular_font = QFont(font_family)
@@ -81,31 +87,31 @@ class Style:
                 text-align: right;
             }
         """
-        self.combo_box = """
-            QComboBox {
+        self.combo_box = f"""
+            QComboBox {{
                 background-color: #383838;
                 color: #CACACA;
                 border: none;
                 padding: 5px 8px;
                 border-radius: 4px;
                 font-size: 14px;
-            }
-            QComboBox QAbstractItemView {
+            }}
+            QComboBox QAbstractItemView {{
                 background-color: #383838;
                 color: #ffffff;
                 padding: 5px 1px;
                 border: 1px solid #4F4F4F;
                 border-radius: 4px;
                 margin: 0px;
-            }
-            QComboBox::drop-down {
+            }}
+            QComboBox::drop-down {{
                 padding-right: 8px;
                 border: none;
                 border-radius: 4px;
-            }
-            QComboBox::down-arrow {
-                image: url(../resources/dropdown.svg);
-            }
+            }}
+            QComboBox::down-arrow {{
+                image: url({dropdown_icon});
+            }}
         """
         self.widget = """
             QWidget {

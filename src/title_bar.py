@@ -2,6 +2,8 @@ from PyQt6.QtWidgets import QWidget, QHBoxLayout, QPushButton
 from PyQt6.QtCore import Qt, QSize, QPoint
 from PyQt6.QtGui import QIcon
 from style import Style
+import sys
+import os
 
 
 class CustomTitleBar(QWidget):
@@ -9,6 +11,17 @@ class CustomTitleBar(QWidget):
         super().__init__(parent)
         self.parent = parent
         self.custom_style = Style()
+
+        if getattr(sys, 'frozen', False):
+            script_dir = sys._MEIPASS
+            close_icon = os.path.join(script_dir, 'resources/close.svg')
+            minimize_icon = os.path.join(script_dir, 'resources/minimize.svg')
+            fullscreen_icon = os.path.join(script_dir, 'resources/fullscreen.svg')
+        else:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            close_icon = os.path.join(script_dir, '../resources/close.svg')
+            minimize_icon = os.path.join(script_dir, '../resources/minimize.svg')
+            fullscreen_icon = os.path.join(script_dir, '../resources/fullscreen.svg')
 
         # Variables to track dragging
         self.dragging = False
@@ -32,14 +45,14 @@ class CustomTitleBar(QWidget):
 
         # Add close button to the title bar
         close_button = QPushButton()
-        close_button.setIcon(QIcon("../resources/close.svg"))
+        close_button.setIcon(QIcon(close_icon))
         close_button.setIconSize(QSize(10, 10))
         close_button.setStyleSheet(self.custom_style.button_title_bar + "background-color:#BF616A;}")
         close_button.setFont(self.custom_style.bold_font)
 
         # Add minimize button to the title bar
         minimize_button = QPushButton()
-        minimize_button.setIcon(QIcon("../resources/minimize.svg"))
+        minimize_button.setIcon(QIcon(minimize_icon))
         minimize_button.setIconSize(QSize(10, 10))
         minimize_button.setStyleSheet(self.custom_style.button_title_bar + "background-color:#EBCB8B;}")
         minimize_button.setFont(self.custom_style.bold_font)
@@ -57,7 +70,7 @@ class CustomTitleBar(QWidget):
         # Add fullscreen button to the title bar
         if allow_fullscreen:
             fullscreen_button = QPushButton()
-            fullscreen_button.setIcon(QIcon("../resources/fullscreen.svg"))
+            fullscreen_button.setIcon(QIcon(fullscreen_icon))
             fullscreen_button.setIconSize(QSize(10, 10))
             fullscreen_button.setStyleSheet(self.custom_style.button_title_bar + "background-color:#A3BE8C;}")
             fullscreen_button.setFont(self.custom_style.bold_font)
