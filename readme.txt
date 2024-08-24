@@ -22,7 +22,11 @@ Project Setup
    
    pip3 install -r requirements.txt
 
-4. Run the application:
+4. Ignore changes to the `default` directory content
+
+   git update-index --assume-unchanged src/default/settings.json src/default/timesheet.csv
+
+5. Run the application:
 
    cd src
    python3 main.py

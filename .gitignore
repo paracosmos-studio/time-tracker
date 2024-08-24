@@ -3,3 +3,6 @@
 .vscode
 __pycache__
 *.pyc
+src/default/
+*.json
+*.csv
