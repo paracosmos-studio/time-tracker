@@ -1,0 +1,9 @@
+{
+    "version": "1.0.0",
+    "csv_file_path": "default/timesheet.csv",
+    "projects": [
+        "Personal",
+        "Work",
+        "Study"
+    ]
+}
