@@ -15,7 +15,7 @@ Project Setup
 
 2. Create a virtual environment and activate it
 
-   python3 venv .venv
+   python3 -m venv .venv
    source .venv/bin/activate   # For Linux and MacOS
    .venv\Scripts\activate      # For Windows
 
