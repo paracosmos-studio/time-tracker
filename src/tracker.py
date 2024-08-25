@@ -20,13 +20,6 @@ class Timer:
             self.start_time = datetime.now()
 
 
-    def pause(self):
-        if self.start_time:
-            self.paused_time = datetime.now()
-            self.total_time += self.paused_time - self.start_time
-            self.start_time = None
-
-
     def stop(self):
         if self.start_time:
             end_time = datetime.now()

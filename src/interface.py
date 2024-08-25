@@ -155,7 +155,7 @@ class MainWindow(QMainWindow):
                 datetime.now() - total_time, 
                 end_time, 
                 total_time, 
-                description if ok else ""
+                description.textValue() if ok else ""
             )
 
         self.toggle_button.setText("START")
