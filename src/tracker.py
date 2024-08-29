@@ -8,14 +8,12 @@ class Timer:
 
     def __init__(self):
         self.start_time = None
-        self.paused_time = None
         self.total_time = timedelta()
 
 
     def start(self):
-        if self.paused_time and self.start_time:
-            self.start_time = datetime.now() - (self.paused_time - self.start_time)
-            self.paused_time = None
+        if self.start_time:
+            self.start_time = datetime.now() - self.start_time
         elif self.start_time is None:
             self.start_time = datetime.now()
 
@@ -23,7 +21,7 @@ class Timer:
     def stop(self):
         if self.start_time:
             end_time = datetime.now()
-            self.total_time += end_time - self.start_time
+            self.total_time = end_time - self.start_time
             self.start_time = None
             return end_time, self.total_time
         return None, None
@@ -31,7 +29,6 @@ class Timer:
 
     def reset(self):
         self.start_time = None
-        self.paused_time = None
         self.total_time = timedelta()
 
 

@@ -164,12 +164,17 @@ class MainWindow(QMainWindow):
         )
         self.project_combo.setDisabled(False)
         self.settings_button.setDisabled(False)
-        self.update_timer_label()
+        self.show_total_time()
 
 
     def update_timer_label(self):
         elapsed_time = self.timer.get_elapsed_time()
         self.timer_label.setText(str(elapsed_time).split(".")[0])  # Display HH:MM:SS
+
+
+    def show_total_time(self):
+        total_worked_time = self.csv_handler.read_project_time(self.project_combo.currentText())
+        self.timer_label.setText(str(timedelta(seconds=total_worked_time)).split(".")[0])
 
 
     def project_changed(self, project_name):

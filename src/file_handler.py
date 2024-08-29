@@ -1,4 +1,5 @@
 import csv
+import datetime
 
 class CSVHandler:
     """
@@ -35,9 +36,9 @@ class CSVHandler:
             with open(self.file_path, mode='r') as file:
                 reader = csv.reader(file)
                 for row in reader:
-                    if row[4] == project:
+                    if row[4] == project and str(row[0]) == str(datetime.date.today()):
                         total_time += self._convert_time_to_seconds(row[3])
-        
+
         except FileNotFoundError:
             pass
 
