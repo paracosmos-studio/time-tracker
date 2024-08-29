@@ -21,7 +21,7 @@ class ProjectManager:
     def __init__(self, settings_file=settings_dir):
         self.settings_file = settings_file
         self.settings = self.load_settings()
-        self.version = self.settings.get('version', '1.0.0')
+        self.version = self.settings.get('version', '1.0.1')
         self.projects = self.settings.get('projects', [])
         self.csv_file_path = self.settings.get('csv_file_path', timesheet_dir)
 
@@ -31,7 +31,7 @@ class ProjectManager:
             with open(self.settings_file, 'r') as file:
                 return json.load(file)
         return {
-            "version": "1.0.0",
+            "version": "1.0.1",
             "projects": [],
             "csv_file_path": timesheet_dir
         }
