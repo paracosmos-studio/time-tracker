@@ -237,7 +237,8 @@ class MainWindow(QMainWindow):
         sub_layout.addWidget(self.version_label)
 
         # Display Company
-        self.version_label = QLabel(f'2024 © Paracosmos Studio Inc.')
+        year = datetime.now().year
+        self.version_label = QLabel(f'2024 - {year} © Paracosmos Studio Inc.')
         self.version_label.setStyleSheet("color:#5f5f5f;font-size:11px;margin-bottom:10px;")
         self.version_label.setFont(self.custom_style.regular_font)
         self.version_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
