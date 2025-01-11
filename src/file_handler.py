@@ -20,6 +20,17 @@ class CSVHandler:
     ):
         with open(self.file_path, mode='a', newline='') as file:
             writer = csv.writer(file)
+
+            if file.tell() == 0:
+                writer.writerow([
+                    "Date",
+                    "Start Time",
+                    "End Time",
+                    "Total Time",
+                    "Project",
+                    "Description"
+                ])
+
             writer.writerow([
                 start_time.date(),
                 start_time.time(),
