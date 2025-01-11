@@ -1,18 +1,18 @@
-<center>
-   <img src='./media/time-tracker_logo.png' alt='Logo' width='80'>
-   <h3>Time Tracker</h3>
-   <p>
-      A desktop application that allows you to track time for multiple different projects. The data is stored locally in a <code>.csv</code> file. The location of the <code>.csv</code> file can be changed from the settings.
-   </p>
-</center>
+<p align="center"><img src='./media/time-tracker_logo.png' alt='Logo' width='80'></p>
+<h3 align="center">Time Tracker</h3>
+<p align="center">
+   A desktop application that allows you to track time for multiple different projects. The data is stored locally in a <code>.csv</code> file. The location of the <code>.csv</code> file can be changed from the settings.
+</p>
+
 
 ## Screenshots
 
-<center>
+<p align="center">
    <img src='./media/time-tracker_ss_main.png' alt='screenshot-main' width='300'>
-   <img src='./media/time-tracker_ss_settings.png' alt='screenshot-settings' width='300'>
    <img src='./media/time-tracker_ss_projects.png' alt='screenshot-projects' width='300'>
-</center>
+   <img src='./media/time-tracker_ss_settings.png' alt='screenshot-settings' width='300'>
+</p>
+
 
 ## Project Setup
 
