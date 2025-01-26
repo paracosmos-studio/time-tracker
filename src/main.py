@@ -5,7 +5,7 @@ Time Tracker by Paracosmos Studio.
 A simple time tracking application built with PyQt6 that allows 
 users to track time spent on different projects.
 
-Version : 1.0.0
+Version : 1.0.2
 License : MIT
 
 """
