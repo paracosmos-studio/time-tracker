@@ -125,7 +125,7 @@ class MainWindow(QMainWindow):
     def start_timer(self):
         if self.project_combo.currentText():
             self.timer.start()
-            self.update_timer.start(1000)
+            self.update_timer.start(0)
             self.toggle_button.setText("STOP")
             self.toggle_button.setStyleSheet(
                 self.custom_style.button_primary + "background-color:#BF616A;color:#FFFFFF;}"
