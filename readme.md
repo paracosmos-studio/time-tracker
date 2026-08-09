@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+> This repository is no longer maintained.  
+> A newer version of this application is available at https://tallier.app.
+
+<br/>
+
 <p align="center"><img src='./media/time-tracker_logo.png' alt='Logo' width='80'></p>
 <h3 align="center">Time Tracker</h3>
 <p align="center">
